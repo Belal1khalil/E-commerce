@@ -399,16 +399,20 @@ export default function Navbar() {
                </>
 
                }
-                <a
-                  href="/logout"
+                {token && <>
+                  <a
                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-200"
                   onClick={() => {
                     toggleUserMenu();
                     setIsMenuOpen(false);
+                    logOut()
                   }}
                 >
                   Logout
                 </a>
+                </>
+
+                }
               </div>
             </div>
 
