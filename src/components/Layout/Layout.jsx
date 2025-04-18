@@ -7,7 +7,7 @@ export default function Layout() {
   
   return <>
   <Navbar/>
-  <div className="container pb-10 pt-20 min-h-[75vh]">
+  <div className="container w-[100%] pb-10 pt-20 min-h-[75vh] ">
   <Outlet></Outlet>
   </div>
   <Footer/>
