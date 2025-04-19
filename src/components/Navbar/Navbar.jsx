@@ -282,15 +282,17 @@
 
 
 import { useContext, useState } from "react";
-import {  NavLink } from "react-router-dom";
+import {  Link, NavLink } from "react-router-dom";
 import Logo from "../../assets/imgs/freshcart-logo.svg";
 import { UserContext } from "../context/User.context";
+import { CartContext } from "../context/Cart.context";
 
 export default function Navbar() {
   
   const {token , logOut} = useContext(UserContext)
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+      const {cartInfo} = useContext(CartContext)
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const toggleUserMenu = () => setIsUserMenuOpen(!isUserMenuOpen);
@@ -347,16 +349,24 @@ export default function Navbar() {
 
           <div className="flex items-center gap-5">
             {/* Cart - always visible */}
-            <div className="cart relative text-xl cursor-pointer md:mr-0 hover:scale-110 transition-transform duration-200">
+            <Link to= "/cart" className="cart relative text-xl cursor-pointer md:mr-0 hover:scale-110 transition-transform duration-200">
              {token && <>
               <i className="fa-solid fa-cart-plus"></i>
-              <div className="cart-counter flex justify-center items-center absolute h-5 w-5 rounded-full bg-primary-800 text-white right-0 top-0 translate-x-1/2 -translate-y-1/2">
-                <i className="fa-solid fa-spinner text-sm fa-spin"></i>
+              <div className="cart-counter text-sm font-bold flex justify-center items-center absolute h-5 w-5 rounded-full bg-primary-800 text-white right-0 top-0 translate-x-1/2 -translate-y-1/2">
+                {/* <i className="fa-solid fa-spinner text-sm fa-spin"></i> */}
+                {cartInfo === null ? (
+                  <i className="fa-solid fa-spinner text-sm fa-spin"></i>
+                ) : (
+                  <span className="text-xs font-bold text-white">
+                    {cartInfo?.numOfCartItems}
+                  </span>
+                )
+              }
               </div>
              </>
 
              }
-            </div>
+            </Link>
 
             {/* User menu toggle - shown on all screens */}
             <div className="relative">
@@ -417,7 +427,9 @@ export default function Navbar() {
             </div>
 
             {/* Mobile menu button - shown on md and below */}
-            <button
+            { token && <>
+            
+              <button
               onClick={toggleMenu}
               className="lg:hidden p-2 text-xl text-black rounded-md "
               aria-expanded={isMenuOpen}
@@ -425,6 +437,9 @@ export default function Navbar() {
             >
               <i className={`fa-solid ${isMenuOpen ? "fa-xmark" : "fa-bars"} transition-transform duration-300`}></i>
             </button>
+            </>
+
+            }
 
             {/* Desktop Auth Links - shown on lg screens and up */}
             <ul className="hidden lg:flex items-center gap-5">

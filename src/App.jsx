@@ -10,6 +10,8 @@ import ResetPassword from "./pages/Home/Resetpassword/ResetPassword"
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute"
 import GuestRoute from "./components/GuestRoute/GuestRoute"
 import UserProvider from "./components/context/User.context"
+import CartProvider from "./components/context/Cart.context"
+import Cart from "./pages/Cart/Cart"
 
 function App() {
 
@@ -24,6 +26,7 @@ const router = createBrowserRouter([
    </ProtectedRoute>
     ), children: [
     {index:true, element:<Home/>},
+    {path:"cart", element:<Cart/>},
   ]
   },
   {
@@ -46,7 +49,9 @@ const router = createBrowserRouter([
   return (
     <>
     <UserProvider>
-       <RouterProvider router={router}/>
+       <CartProvider>
+         <RouterProvider router={router}/>
+       </CartProvider>
     </UserProvider>
     <Toaster position="top-right" />
     </>

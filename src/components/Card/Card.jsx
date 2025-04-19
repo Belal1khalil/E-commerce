@@ -1,11 +1,14 @@
 /* eslint-disable react/prop-types */
 
+import { useContext } from "react"
+import { CartContext } from "../context/Cart.context"
+
 
 // eslint-disable-next-line react/prop-types
 export default function Card({productInfo}) {
      // eslint-disable-next-line no-unused-vars, react/prop-types
-     const { imageCover, title, price, category, description , ratingsAverage} = productInfo
-
+     const { id ,   imageCover, title, price, category, description , ratingsAverage} = productInfo
+        const {addProductToCart} =  useContext(CartContext)
 
   return (
     <>
@@ -23,14 +26,15 @@ export default function Card({productInfo}) {
   {/* Overlay Actions */}
   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex justify-center items-center gap-4">
     {[
-      { icon: "fa-heart", tooltip: "Wishlist"  },
+      { icon: "fa-heart", tooltip: "Wishlist" , },
       { icon: "fa-cart-shopping", tooltip: "Add to Cart" },
       { icon: "fa-eye", tooltip: "View" }
     ].map((item, idx) => (
       <div
         key={idx}
         className="relative group/icon w-10 h-10 bg-white text-primary-600 rounded-full flex items-center justify-center shadow-md hover:bg-primary-600 hover:text-white transition hover:scale-110 hover:rotate-6 cursor-pointer"
-      >
+        onClick={item.icon === "fa-cart-shopping" ? () => addProductToCart({ productId: id }) : null} // Call addProductTocart on click
+     >
         <i className={`fa-solid ${item.icon}`}></i>
         <span className="absolute -bottom-8  scale-0 group-hover/icon:scale-100 bg-black text-white text-xs px-2 py-1 rounded-md transition-all opacity-80 z-10">
           {item.tooltip}
