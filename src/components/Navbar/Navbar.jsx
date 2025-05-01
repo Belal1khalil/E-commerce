@@ -317,7 +317,7 @@ export default function Navbar() {
   return (
     <>
       <nav className="bg-slate-200 shadow-sm py-3 px-4 fixed top-0 right-0 left-0 z-50">
-        <div className="container flex flex-wrap  justify-between">
+        <div className="container flex flex-nowrap  justify-between space-x-3">
           <div className="flex items-center gap-12">
             <a href="/">
               <img src={Logo} alt="FreshCart Logo"  />
