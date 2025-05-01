@@ -12,6 +12,8 @@ import GuestRoute from "./components/GuestRoute/GuestRoute"
 import UserProvider from "./components/context/User.context"
 import CartProvider from "./components/context/Cart.context"
 import Cart from "./pages/Cart/Cart"
+import { WishlistProvider } from "./components/context/Wishlist.context"
+import WishList from "./pages/WishList/WishList"
 
 function App() {
 
@@ -27,6 +29,7 @@ const router = createBrowserRouter([
     ), children: [
     {index:true, element:<Home/>},
     {path:"cart", element:<Cart/>},
+    {path:"wishlist", element:<WishList/>},
   ]
   },
   {
@@ -49,9 +52,11 @@ const router = createBrowserRouter([
   return (
     <>
     <UserProvider>
+       <WishlistProvider>
        <CartProvider>
          <RouterProvider router={router}/>
        </CartProvider>
+       </WishlistProvider>
     </UserProvider>
     <Toaster position="top-right" />
     </>

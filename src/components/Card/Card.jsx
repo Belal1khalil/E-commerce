@@ -2,6 +2,7 @@
 
 import { useContext } from "react"
 import { CartContext } from "../context/Cart.context"
+import { WishlistContext } from "../context/Wishlist.context"
 
 
 // eslint-disable-next-line react/prop-types
@@ -9,6 +10,7 @@ export default function Card({productInfo}) {
      // eslint-disable-next-line no-unused-vars, react/prop-types
      const { id ,   imageCover, title, price, category, description , ratingsAverage} = productInfo
         const {addProductToCart} =  useContext(CartContext)
+        const {addProductToWishlist} = useContext(WishlistContext)
 
   return (
     <>
@@ -34,6 +36,7 @@ export default function Card({productInfo}) {
         key={idx}
         className="relative group/icon w-10 h-10 bg-white text-primary-600 rounded-full flex items-center justify-center shadow-md hover:bg-primary-600 hover:text-white transition hover:scale-110 hover:rotate-6 cursor-pointer"
         onClick={item.icon === "fa-cart-shopping" ? () => addProductToCart({ productId: id }) : null} // Call addProductTocart on click
+        onClickCapture={item.icon === "fa-heart" ? () => addProductToWishlist({productId : id})  : null} // Placeholder for wishlist action
      >
         <i className={`fa-solid ${item.icon}`}></i>
         <span className="absolute -bottom-8  scale-0 group-hover/icon:scale-100 bg-black text-white text-xs px-2 py-1 rounded-md transition-all opacity-80 z-10">

@@ -281,18 +281,29 @@
 
 
 
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {  Link, NavLink } from "react-router-dom";
 import Logo from "../../assets/imgs/freshcart-logo.svg";
 import { UserContext } from "../context/User.context";
 import { CartContext } from "../context/Cart.context";
+import { WishlistContext } from "../context/Wishlist.context";
 
 export default function Navbar() {
   
   const {token , logOut} = useContext(UserContext)
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
-      const {cartInfo} = useContext(CartContext)
+      const {cartInfo , getCartProducts} = useContext(CartContext)
+      const {WishListinfo , getWishlistProducts} = useContext(WishlistContext)
+      
+      useEffect(()=>{
+        getCartProducts()
+      } , [])
+
+      useEffect(()=>{
+        getWishlistProducts()
+      } , [])
+      
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const toggleUserMenu = () => setIsUserMenuOpen(!isUserMenuOpen);
@@ -355,7 +366,7 @@ export default function Navbar() {
               <div className="cart-counter text-sm font-bold flex justify-center items-center absolute h-5 w-5 rounded-full bg-primary-800 text-white right-0 top-0 translate-x-1/2 -translate-y-1/2">
                 {/* <i className="fa-solid fa-spinner text-sm fa-spin"></i> */}
                 {cartInfo === null ? (
-                  <i className="fa-solid fa-spinner text-sm fa-spin"></i>
+                  0
                 ) : (
                   <span className="text-xs font-bold text-white">
                     {cartInfo?.numOfCartItems}
@@ -367,6 +378,27 @@ export default function Navbar() {
 
              }
             </Link>
+
+            <Link to= "/wishlist" className="cart relative text-xl cursor-pointer md:mr-0 hover:scale-110 transition-transform duration-200">
+             {token && <>
+              <i className="fa-regular fa-heart"></i>
+              <div className="cart-counter text-sm font-bold flex justify-center items-center absolute h-5 w-5 rounded-full bg-primary-800 text-white right-0 top-0 translate-x-1/2 -translate-y-1/2">
+                {/* <i className="fa-solid fa-spinner text-sm fa-spin"></i> */}
+                {cartInfo === null ? (
+                 0
+                ) : (
+                  <span className="text-xs font-bold text-white">
+                    {WishListinfo?.count}
+                  </span>
+                )
+              }
+              
+              </div>
+             </>
+
+             }
+            </Link>
+            
 
             {/* User menu toggle - shown on all screens */}
             <div className="relative">
