@@ -12,7 +12,8 @@ export default function SignUp() {
 
   const navigate = useNavigate();
 
-  const passwordRegex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/;
+  const passwordRegex =
+    /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/;
   const phoneRegex = /^(02)?01[0125][0-9]{8}$/;
 
   const validationSchema = object({
@@ -50,7 +51,6 @@ export default function SignUp() {
         setTimeout(() => {
           navigate("/login");
         }, 2000);
-        
       }
     } catch (error) {
       toast.error(error.response.data.message);
@@ -78,14 +78,18 @@ export default function SignUp() {
         <div className="text-center mb-6">
           <i className="fa-regular fa-circle-user text-5xl text-primary-600 mb-2"></i>
           <h1 className="text-3xl font-bold text-slate-700">Register Now</h1>
-          <p className="text-slate-500 text-sm mt-1">Welcome back! Please fill all inputs.</p>
+          <p className="text-slate-500 text-sm mt-1">
+            Welcome back! Please fill all inputs.
+          </p>
         </div>
-        </div>
+      </div>
 
       <form className="space-y-5" onSubmit={formik.handleSubmit}>
         {/* Name */}
         <div>
-          <label className="block mb-1 text-slate-700 font-medium text-sm">Name:</label>
+          <label className="block mb-1 text-slate-700 font-medium text-sm">
+            Name:
+          </label>
           <input
             type="text"
             name="name"
@@ -102,7 +106,9 @@ export default function SignUp() {
 
         {/* Email */}
         <div>
-          <label className="block mb-1 text-slate-700 font-medium text-sm">Email:</label>
+          <label className="block mb-1 text-slate-700 font-medium text-sm">
+            Email:
+          </label>
           <input
             type="email"
             name="email"
@@ -122,7 +128,9 @@ export default function SignUp() {
 
         {/* Password */}
         <div className="relative">
-          <label className="block mb-1 text-slate-700 font-medium text-sm">Password:</label>
+          <label className="block mb-1 text-slate-700 font-medium text-sm">
+            Password:
+          </label>
           <input
             type={showPassword ? "text" : "password"}
             name="password"
@@ -137,16 +145,24 @@ export default function SignUp() {
             onClick={() => setShowPassword(!showPassword)}
             className="absolute top-9 right-3 text-slate-500 hover:text-primary-600"
           >
-            <i className={`fa-regular ${showPassword ? "fa-eye" : "fa-eye-slash"}`}></i>
+            <i
+              className={`fa-regular ${
+                showPassword ? "fa-eye" : "fa-eye-slash"
+              }`}
+            ></i>
           </button>
           {formik.errors.password && formik.touched.password && (
-            <p className="text-red-500 mt-1 text-sm">* {formik.errors.password}</p>
+            <p className="text-red-500 mt-1 text-sm">
+              * {formik.errors.password}
+            </p>
           )}
         </div>
 
         {/* Confirm Password */}
         <div className="relative">
-          <label className="block mb-1 text-slate-700 font-medium text-sm">Confirm Password:</label>
+          <label className="block mb-1 text-slate-700 font-medium text-sm">
+            Confirm Password:
+          </label>
           <input
             type={showRePassword ? "text" : "password"}
             name="rePassword"
@@ -161,16 +177,24 @@ export default function SignUp() {
             onClick={() => setShowRePassword(!showRePassword)}
             className="absolute top-9 right-3 text-slate-500 hover:text-primary-600"
           >
-            <i className={`fa-regular ${showRePassword ? "fa-eye" : "fa-eye-slash"}`}></i>
+            <i
+              className={`fa-regular ${
+                showRePassword ? "fa-eye" : "fa-eye-slash"
+              }`}
+            ></i>
           </button>
           {formik.errors.rePassword && formik.touched.rePassword && (
-            <p className="text-red-500 mt-1 text-sm">* {formik.errors.rePassword}</p>
+            <p className="text-red-500 mt-1 text-sm">
+              * {formik.errors.rePassword}
+            </p>
           )}
         </div>
 
         {/* Phone */}
         <div>
-          <label className="block mb-1 text-slate-700 font-medium text-sm">Phone:</label>
+          <label className="block mb-1 text-slate-700 font-medium text-sm">
+            Phone:
+          </label>
           <input
             type="tel"
             name="phone"

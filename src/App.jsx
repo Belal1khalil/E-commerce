@@ -14,6 +14,9 @@ import CartProvider from "./components/context/Cart.context"
 import Cart from "./pages/Cart/Cart"
 import { WishlistProvider } from "./components/context/Wishlist.context"
 import WishList from "./pages/WishList/WishList"
+import Productdetails from "./pages/Productdetails/Productdetails"
+import Checkout from "./pages/Checkout/Checkout"
+
 
 function App() {
 
@@ -30,6 +33,9 @@ const router = createBrowserRouter([
     {index:true, element:<Home/>},
     {path:"cart", element:<Cart/>},
     {path:"wishlist", element:<WishList/>},
+    {path:"product/:id", element:<Productdetails/>},
+    {path:"checkout", element:<Checkout/>}
+
   ]
   },
   {

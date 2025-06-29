@@ -332,11 +332,7 @@ export default function Navbar() {
                   Home
                 </NavLink>
               </li>
-              <li>
-                <NavLink className={navLinkClasses} to="/products">
-                  Products
-                </NavLink>
-              </li>
+             
               <li>
                 <NavLink className={navLinkClasses} to="/categories">
                   Categories
