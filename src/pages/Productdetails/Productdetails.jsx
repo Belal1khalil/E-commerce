@@ -110,7 +110,30 @@ export default function Productdetails() {
             <h2 className="text-2xl font-bold text-slate-800">
               Related Products
             </h2>
-            <Swiper autoplay slidesPerView={6} spaceBetween={20} className="my-6">
+            <Swiper
+              autoplay
+              slidesPerView={6}
+              spaceBetween={20}
+              className="my-6"
+              breakpoints={{
+                320: {
+                  slidesPerView: 2,
+                  spaceBetween: 10,
+                },
+                640: {
+                  slidesPerView: 3,
+                  spaceBetween: 15,
+                },
+                768: {
+                  slidesPerView: 4,
+                  spaceBetween: 20,
+                },
+                1024: {
+                  slidesPerView: 6,
+                  spaceBetween: 30,
+                },
+              }}
+            >
               {relatedProducts.map((product) => (
                 <SwiperSlide key={product._id}>
                   <Card productInfo={product} />

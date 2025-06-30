@@ -10,10 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fontsource-variable/cairo": "^5.2.6",
     "@fontsource/encode-sans-expanded": "^5.2.5",
     "@fortawesome/fontawesome-free": "^6.7.2",
     "axios": "^1.8.4",
     "formik": "^2.4.6",
+    "jwt-decode": "^4.0.0",
     "lucide-react": "^0.488.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

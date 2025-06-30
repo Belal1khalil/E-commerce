@@ -24,6 +24,9 @@ export default {
           950:"#055705",
         }
       },
+      fontFamily: {
+        cairo: ['Cairo Variable', 'sans-serif']
+      },
       screens:{
         "2xl":"1320px",
       },
