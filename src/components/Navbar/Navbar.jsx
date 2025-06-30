@@ -240,18 +240,7 @@ export default function Navbar() {
                   Home
                 </NavLink>
               </li>
-              <li>
-                <NavLink
-                  className={navLinkClasses}
-                  to="/products"
-                  onClick={() => {
-                    toggleMenu();
-                    setIsUserMenuOpen(false);
-                  }}
-                >
-                  Products
-                </NavLink>
-              </li>
+              
               <li>
                 <NavLink
                   className={navLinkClasses}

@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import Loading from "../Loading/Loading";
 import { Autoplay } from "swiper/modules";
+import { Link } from "react-router-dom";
 
 export default function CategorySlider() {
 const [categories, setCategories] = useState(null)
@@ -66,6 +67,12 @@ const [categories, setCategories] = useState(null)
             />
              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
                <h3 className="text-white text-xl font-bold p-4">{category.name}</h3>
+               
+             </div>
+             <div className="absolute inset-0 flex items-center justify-center">
+               <Link to={`/category/${category._id}`} className="bg-primary-800 text-white px-4 py-2 rounded-md">
+                 Shop Now
+               </Link>
              </div>
          </div>
         </div>
